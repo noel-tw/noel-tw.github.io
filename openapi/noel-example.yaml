@@ -13,7 +13,7 @@ info:
         url: https://creativecommons.org/licenses/by/4.0/
 externalDocs:
     description: External Documentation
-    url: http://localhost
+    url: https://noel-tw.github.io
 servers:
   - url: https://cloud.api.trimble.com/cloud/noel/v1
     description: prod
@@ -70,7 +70,7 @@ paths:
                                         time: 1661061600
             externalDocs:
                 description: External Documentation
-                url: http://localhost
+                url: https://noel-tw.github.io
     /data:
         post:
             operationId: data.post
@@ -108,7 +108,7 @@ paths:
                     description: Input data not provided.
             externalDocs:
                 description: External Documentation
-                url: http://localhost
+                url: https://noel-tw.github.io
 components:
     schemas:
         data:
