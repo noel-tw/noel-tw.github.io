@@ -106,6 +106,14 @@ paths:
                                         example: ebee71c9-87d1-47f4-a1c0-c1a781f94981
                 "400":
                     description: Input data not provided.
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    error:
+                                        type: string
+                                        example: "Input data not provided."
             externalDocs:
                 description: External Documentation
                 url: https://noel-tw.github.io
