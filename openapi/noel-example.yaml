@@ -140,8 +140,7 @@ components:
         Token:
             type: http
             description: |
-                In order to use the example API,
-                provide a JWT Bearer token in the Authorization header.
+                In order to use the example API, provide a JWT Bearer token in the header.
             scheme: bearer
             bearerFormat: JWT
 tags:
