@@ -1,0 +1,34 @@
+openapi: 3.0.2
+info:
+    title: global.yaml
+    description: Providing global components to be included without duplication.
+    contact:
+        name: Noel Whelan
+        email: noel_whelan@trimble.com
+        url: https://noel-tw.github.io
+    version: v1
+servers:
+  - url: https://noel-tw.github.io
+    description: github
+  - url: http://localhost
+    description: local
+paths:
+    /:
+        get:
+            operationId: default
+            description: The default endpoint.
+            tags:
+              - Global
+            responses:
+                "200":
+                    description: OK
+components:
+    securitySchemes:
+        Token:
+            type: http
+            description: |
+                Provide a JWT Bearer token in the header.
+            scheme: bearer
+            bearerFormat: JWT
+tags:
+  - name: Global
