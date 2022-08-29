@@ -138,11 +138,7 @@ components:
                     type: integer
     securitySchemes:
         Token:
-            type: http
-            description: |
-                In order to use the example API, provide a JWT Bearer token in the header.
-            scheme: bearer
-            bearerFormat: JWT
+            $ref: "https://noel-tw.github.io/openapi/global.yaml#/components/securitySchemes/Token"
 tags:
   - name: Introduction
     description: |
