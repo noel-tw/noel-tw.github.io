@@ -15,11 +15,11 @@ externalDocs:
     description: External Documentation
     url: https://noel-tw.github.io
 servers:
-  - url: https://cloud.api.trimble.com/cloud/noel/v1
+  - url: https://cloud.api.trimble.com/noel/v1
     description: prod
-  - url: https://cloud.qa.api.trimblecloud.com/cloud/noel/v1
+  - url: https://cloud.qa.api.trimblecloud.com/noel/v1
     description: qa
-  - url: https://cloud.dev.api.trimblecloud.com/cloud/noel/v1
+  - url: https://cloud.dev.api.trimblecloud.com/noel/v1
     description: dev
   - url: http://localhost:{port}/api/v1
     description: local
