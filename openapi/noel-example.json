@@ -25,7 +25,7 @@
             "description": "local",
             "variables": {
                 "port": {
-                    "default": ""
+                    "default": "10000"
                 }
             }
         }
@@ -117,9 +117,22 @@
                 "tags": [
                     "Endpoints"
                 ],
-                "summary": "List data objects",
-                "description": "Provides a list of data objects.",
+                "summary": "Get or list data object(s)",
+                "description": "Provides object data.",
                 "operationId": "data.get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Provide the data object ID.",
+                        "required": false,
+                        "allowEmptyValue": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "ebee71c9-87d1-47f4-a1c0-c1a781f94981"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -137,13 +150,27 @@
                                     }
                                 },
                                 "examples": {
-                                    "Example 1": {
+                                    "index": {
                                         "value": [
                                             {
                                                 "id": "ebee71c9-87d1-47f4-a1c0-c1a781f94981"
                                             },
                                             {
                                                 "id": "ebee71c9-87d1-47f4-a1c0-c1a781f94982"
+                                            }
+                                        ]
+                                    },
+                                    "entry": {
+                                        "value": [
+                                            {
+                                                "id": "1zvfTtYjTo9.",
+                                                "date": "2022-08-21T06:00:00+00:00",
+                                                "env": "local",
+                                                "name": "ಠ_ృ",
+                                                "query": {
+                                                    "key": "value"
+                                                },
+                                                "time": 1661061600
                                             }
                                         ]
                                     }
