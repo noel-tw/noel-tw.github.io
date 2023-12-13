@@ -1,0 +1,393 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "version": "v1",
+        "title": "Noel Example",
+        "description": "This example API includes a few endpoints to post and view data.\n",
+        "termsOfService": "https://trimble.cloud",
+        "contact": {
+            "name": "Noel Whelan",
+            "email": "noel_whelan@trimble.com",
+            "url": "https://trimble.cloud"
+        },
+        "license": {
+            "url": "https://trimble.cloud",
+            "name": "Trimble"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://n-oel.herokuapp.com/api/v1",
+            "description": "production"
+        },
+        {
+            "url": "http://localhost:{port}/api/v1",
+            "description": "local",
+            "variables": {
+                "port": {
+                    "default": ""
+                }
+            }
+        }
+    ],
+    "paths": {
+        "/path/to/endpoint": {
+            "get": {
+                "tags": [
+                    "Endpoints"
+                ],
+                "summary": "View a data object",
+                "description": "This endpoint yields a few properties in a JSON data object.",
+                "externalDocs": {
+                    "url": "https://noel-tw.github.io",
+                    "description": "External Documentation"
+                },
+                "operationId": "path-to-endpoint.get",
+                "parameters": [
+                    {
+                        "name": "key",
+                        "in": "query",
+                        "description": "Include a ?key=value pair in the URL query.\nThe name of the parameter is not important.\n",
+                        "required": false,
+                        "allowEmptyValue": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "value"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/data"
+                                },
+                                "examples": {
+                                    "object": {
+                                        "summary": "The data object yielded by this endpoint.",
+                                        "value": {
+                                            "id": "1zvfTtYjTo9.",
+                                            "date": "2022-08-21T06:00:00+00:00",
+                                            "env": "local",
+                                            "name": "ಠ_ృ",
+                                            "query": {
+                                                "key": "value"
+                                            },
+                                            "time": 1661061600
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [],
+                "servers": [
+                    {
+                        "url": "https://n-oel.herokuapp.com/api/v1",
+                        "description": "production"
+                    },
+                    {
+                        "url": "http://localhost:{port}/api/v1",
+                        "description": "local",
+                        "variables": {
+                            "port": {
+                                "default": ""
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/data": {
+            "get": {
+                "tags": [
+                    "Endpoints"
+                ],
+                "summary": "List data objects",
+                "description": "Provides a list of data objects.",
+                "operationId": "data.get",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "examples": {
+                                    "Example 1": {
+                                        "value": [
+                                            {
+                                                "id": "ebee71c9-87d1-47f4-a1c0-c1a781f94981"
+                                            },
+                                            {
+                                                "id": "ebee71c9-87d1-47f4-a1c0-c1a781f94982"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "https://n-oel.herokuapp.com/api/v1",
+                        "description": "production"
+                    },
+                    {
+                        "url": "http://localhost:{port}/api/v1",
+                        "description": "local",
+                        "variables": {
+                            "port": {
+                                "default": ""
+                            }
+                        }
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Endpoints"
+                ],
+                "summary": "Input a data entity",
+                "description": "In the JSON POST body, include a data object.\nThis endpoint will provide a UUID back to the client.\n",
+                "externalDocs": {
+                    "url": "https://noel-tw.github.io",
+                    "description": "External Documentation"
+                },
+                "operationId": "data.post",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "description": "Provide a data object with any properties the entity ought to include.",
+                                "properties": {
+                                    "data": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "uuid": {
+                                            "type": "string",
+                                            "format": "uuid",
+                                            "example": "ebee71c9-87d1-47f4-a1c0-c1a781f94981"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Input data not provided.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Input data not provided."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [],
+                "servers": [
+                    {
+                        "url": "https://n-oel.herokuapp.com/api/v1",
+                        "description": "production"
+                    },
+                    {
+                        "url": "http://localhost:{port}/api/v1",
+                        "description": "local",
+                        "variables": {
+                            "port": {
+                                "default": ""
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/encode": {
+            "get": {
+                "tags": [
+                    "Endpoints"
+                ],
+                "summary": "Encode data",
+                "description": "Encode a data value.",
+                "operationId": "get-encode",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "query",
+                        "description": "The data value to be encoded.",
+                        "schema": {
+                            "type": "string",
+                            "example": ".."
+                        }
+                    },
+                    {
+                        "name": "hash",
+                        "in": "query",
+                        "description": "The algorithm to be employed.",
+                        "schema": {
+                            "type": "string",
+                            "example": "md5"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string",
+                                            "example": ".."
+                                        },
+                                        "hash": {
+                                            "type": "string",
+                                            "example": "md5"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "https://n-oel.herokuapp.com/api/v1",
+                        "description": "production"
+                    },
+                    {
+                        "url": "http://localhost:{port}/api/v1",
+                        "description": "local",
+                        "variables": {
+                            "port": {
+                                "default": ""
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        "/jwt": {
+            "get": {
+                "tags": [
+                    "Endpoints"
+                ],
+                "summary": "Get JWT data",
+                "description": "Decode and view JSON Web Token object.",
+                "operationId": "get-jwt",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "token": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "servers": [
+                    {
+                        "url": "https://n-oel.herokuapp.com/api/v1",
+                        "description": "production"
+                    },
+                    {
+                        "url": "http://localhost:{port}/api/v1",
+                        "description": "local",
+                        "variables": {
+                            "port": {
+                                "default": ""
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Endpoints",
+            "description": "The API includes endpoints to GET and POST data."
+        },
+        {
+            "name": "Introduction",
+            "description": "The Example API was developed for testing provider workflow,\ndocumentation, and proxy or gateway enhancements in the console.\n"
+        }
+    ],
+    "externalDocs": {
+        "url": "https://noel-tw.github.io",
+        "description": "External Documentation"
+    },
+    "components": {
+        "schemas": {
+            "data": {
+                "type": "object",
+                "description": "JSON data object yielded by this endpoint.",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "ISO 8601"
+                    },
+                    "env": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "query": {
+                        "type": "object"
+                    },
+                    "time": {
+                        "type": "integer"
+                    }
+                }
+            }
+        }
+    }
+}
