@@ -45,6 +45,17 @@
                 "operationId": "path-to-endpoint.get",
                 "parameters": [
                     {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Provide the data object ID.",
+                        "required": false,
+                        "allowEmptyValue": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "ebee71c9-87d1-47f4-a1c0-c1a781f94981"
+                        }
+                    },
+                    {
                         "name": "key",
                         "in": "query",
                         "description": "Include a ?key=value pair in the URL query.\nThe name of the parameter is not important.\n",
