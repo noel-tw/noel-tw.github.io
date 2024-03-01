@@ -4,14 +4,14 @@
         "version": "v1",
         "title": "Noel Example",
         "description": "This example API includes a few endpoints to post and view data.\n",
-        "termsOfService": "https://trimble.cloud",
+        "termsOfService": "https://noel-tw.github.io",
         "contact": {
             "name": "Noel Whelan",
             "email": "noel_whelan@trimble.com",
             "url": "https://trimble.cloud"
         },
         "license": {
-            "url": "https://trimble.cloud",
+            "url": "https://noel-tw.github.io",
             "name": "Trimble"
         }
     },
@@ -257,7 +257,11 @@
                         }
                     }
                 },
-                "security": [],
+                "security": [
+                    {
+                        "key": []
+                    }
+                ],
                 "servers": [
                     {
                         "url": "https://n-oel.herokuapp.com/api/v1",
@@ -425,6 +429,14 @@
                         "type": "integer"
                     }
                 }
+            }
+        },
+        "securitySchemes": {
+            "key": {
+                "type": "apiKey",
+                "description": "Provide a key to authenticate.",
+                "name": "x-api-key",
+                "in": "header"
             }
         }
     }
