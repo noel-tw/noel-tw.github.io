@@ -420,7 +420,9 @@
                         "type": "string"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "example": "..",
+                        "nullable": true
                     },
                     "query": {
                         "type": "object"
