@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 1080;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#eeeeea", "id": "adp-workforce-now", "label": "adp-workforce-now", "shape": "dot"}, {"color": "#eeeeea", "id": "aws-s3", "label": "aws-s3", "shape": "dot"}, {"color": "#eeeeea", "id": "bamboo-hr", "label": "bamboo-hr", "shape": "dot"}, {"color": "#eeeeea", "id": "buildops", "label": "buildops", "shape": "dot"}, {"color": "#eeeeea", "id": "dayforce", "label": "dayforce", "shape": "dot"}, {"color": "#eeeeea", "id": "clearstory", "label": "clearstory", "shape": "dot"}, {"color": "#eeeeea", "id": "cmic", "label": "cmic", "shape": "dot"}, {"color": "#eeeeea", "id": "emburse-chrome-river", "label": "emburse-chrome-river", "shape": "dot"}, {"color": "#eeeeea", "id": "esub", "label": "esub", "shape": "dot"}, {"color": "#eeeeea", "id": "flashtract", "label": "flashtract", "shape": "dot"}, {"color": "#eeeeea", "id": "followup-crm", "label": "followup-crm", "shape": "dot"}, {"color": "#eeeeea", "id": "foundations", "label": "foundations", "shape": "dot"}, {"color": "#eeeeea", "id": "gauge-telematics", "label": "gauge-telematics", "shape": "dot"}, {"color": "#eeeeea", "id": "fieldwire", "label": "fieldwire", "shape": "dot"}, {"color": "#eeeeea", "id": "hilti-ontrack", "label": "hilti-ontrack", "shape": "dot"}, {"color": "#eeeeea", "id": "ineight", "label": "ineight", "shape": "dot"}, {"color": "#eeeeea", "id": "inspect-point", "label": "inspect-point", "shape": "dot"}, {"color": "#eeeeea", "id": "kojo", "label": "kojo", "shape": "dot"}, {"color": "#eeeeea", "id": "mix-telematics", "label": "mix-telematics", "shape": "dot"}, {"color": "#eeeeea", "id": "mycoi", "label": "mycoi", "shape": "dot"}, {"color": "#eeeeea", "id": "newforma-constructex", "label": "newforma-constructex", "shape": "dot"}, {"color": "#eeeeea", "id": "paycom", "label": "paycom", "shape": "dot"}, {"color": "#eeeeea", "id": "payewaive", "label": "payewaive", "shape": "dot"}, {"color": "#eeeeea", "id": "pedigree-oneview", "label": "pedigree-oneview", "shape": "dot"}, {"color": "#eeeeea", "id": "pins", "label": "pins", "shape": "dot"}, {"color": "#333333", "id": "procore", "label": "procore", "shape": "dot"}, {"color": "#eeeeea", "id": "quote-to-me", "label": "quote-to-me", "shape": "dot"}, {"color": "#eeeeea", "id": "raken", "label": "raken", "shape": "dot"}, {"color": "#eeeeea", "id": "sage-100", "label": "sage-100", "shape": "dot"}, {"color": "#eeeeea", "id": "sage-300", "label": "sage-300", "shape": "dot"}, {"color": "#eeeeea", "id": "sap-concur-expense", "label": "sap-concur-expense", "shape": "dot"}, {"color": "#eeeeea", "id": "sap-concur-invoice", "label": "sap-concur-invoice", "shape": "dot"}, {"color": "#eeeeea", "id": "service-titan", "label": "service-titan", "shape": "dot"}, {"color": "#eeeeea", "id": "service-trade", "label": "service-trade", "shape": "dot"}, {"color": "#eeeeea", "id": "fast-weigh", "label": "fast-weigh", "shape": "dot"}, {"color": "#eeeeea", "id": "tenna", "label": "tenna", "shape": "dot"}, {"color": "#0063a3", "id": "b2w", "label": "b2w", "shape": "dot"}, {"color": "#0063a3", "id": "e-builder", "label": "e-builder", "shape": "dot"}, {"color": "#0063a3", "id": "projectsight", "label": "projectsight", "shape": "dot"}, {"color": "#0063a3", "id": "supplier-xchange", "label": "supplier-xchange", "shape": "dot"}, {"color": "#0063a3", "id": "viewpoint-spectrum", "label": "viewpoint-spectrum", "shape": "dot"}, {"color": "#0063a3", "id": "viewpoint-vista", "label": "viewpoint-vista", "shape": "dot"}, {"color": "#eeeeea", "id": "manufacton", "label": "manufacton", "shape": "dot"}, {"color": "#eeeeea", "id": "zk-tech", "label": "zk-tech", "shape": "dot"}]);
+                  edges = new vis.DataSet([{"from": "bamboo-hr", "to": "sage-300"}, {"from": "buildops", "to": "viewpoint-spectrum"}, {"from": "buildops", "to": "viewpoint-vista"}, {"from": "clearstory", "to": "sage-100"}, {"from": "clearstory", "to": "viewpoint-vista"}, {"from": "cmic", "to": "flashtract"}, {"from": "emburse-chrome-river", "to": "viewpoint-spectrum"}, {"from": "esub", "to": "viewpoint-vista"}, {"from": "flashtract", "to": "sage-300"}, {"from": "flashtract", "to": "viewpoint-vista"}, {"from": "followup-crm", "to": "viewpoint-vista"}, {"from": "gauge-telematics", "to": "viewpoint-vista"}, {"from": "hilti-ontrack", "to": "viewpoint-spectrum"}, {"from": "hilti-ontrack", "to": "viewpoint-vista"}, {"from": "ineight", "to": "viewpoint-vista"}, {"from": "kojo", "to": "viewpoint-spectrum"}, {"from": "kojo", "to": "viewpoint-vista"}, {"from": "manufacton", "to": "viewpoint-spectrum"}, {"from": "mycoi", "to": "sage-300"}, {"from": "mycoi", "to": "viewpoint-vista"}, {"from": "newforma-constructex", "to": "procore"}, {"from": "pins", "to": "viewpoint-vista"}, {"from": "procore", "to": "projectsight"}, {"from": "procore", "to": "viewpoint-vista"}, {"from": "projectsight", "to": "viewpoint-spectrum"}, {"from": "projectsight", "to": "viewpoint-vista"}, {"from": "quote-to-me", "to": "sage-300"}, {"from": "quote-to-me", "to": "viewpoint-vista"}, {"from": "raken", "to": "sage-100"}, {"from": "raken", "to": "sage-300"}, {"from": "raken", "to": "viewpoint-spectrum"}, {"from": "raken", "to": "viewpoint-vista"}, {"from": "sage-100", "to": "sap-concur-expense"}, {"from": "sage-100", "to": "sap-concur-invoice"}, {"from": "sage-100", "to": "tenna"}, {"from": "sage-300", "to": "sap-concur-expense"}, {"from": "sage-300", "to": "sap-concur-invoice"}, {"from": "sage-300", "to": "tenna"}, {"from": "sap-concur-expense", "to": "viewpoint-spectrum"}, {"from": "sap-concur-invoice", "to": "viewpoint-vista"}, {"from": "service-titan", "to": "viewpoint-vista"}, {"from": "supplier-xchange", "to": "viewpoint-spectrum"}, {"from": "supplier-xchange", "to": "viewpoint-vista"}, {"from": "tenna", "to": "viewpoint-spectrum"}, {"from": "tenna", "to": "viewpoint-vista"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
