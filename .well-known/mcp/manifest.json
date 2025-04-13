@@ -4,12 +4,12 @@
         {
             "name": "Autodesk Construction Cloud",
             "description": "autodesk-cc/data-mgmt",
-            "openapi": "https://api.xchange.trimble.com/connect/v1/appnetwork/autodesk-cc/data-mgmt/1/swagger/openapi.json"
+            "openapi": "https://api.xchange.trimble.com/connect/v1/direct/autodesk-cc/data-mgmt/1/swagger/openapi.json"
         },
         {
             "name": "Procore",
             "description": "procorev2/procore-v2",
-            "openapi": "https://api.xchange.trimble.com/connect/v1/appnetwork/procorev2/procore-v2/1/swagger/openapi.json"
+            "openapi": "https://api.xchange.trimble.com/connect/v1/direct/procorev2/procore-v2/1/swagger/openapi.json"
         }
     ]
 }
