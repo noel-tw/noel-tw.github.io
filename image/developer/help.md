@@ -33,13 +33,14 @@ flowchart TD
 	subgraph platbranch[" "]
 		direction TB
 		cloudops["Cloud Ops Platform L3"]
-		tdproduct["TD product"]
+		tdmpl["TD or TM prod or eng"]
+		cloudops <-.-> tdmpl
 	end
 
 	subgraph apibranch[" "]
 		direction TB
 		productteam["Product team in DX"]
-		productnondx["Team not in DX"]
+		teamnotindx["Team not in DX"]
 	end
 
 	tdl1 -->|platform| platbranch
