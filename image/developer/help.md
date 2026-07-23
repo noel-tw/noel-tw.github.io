@@ -29,6 +29,19 @@ flowchart TD
 	casetype -->|No| dxback["Back to doc"]
 
 	createcase --> tdl1["TD L1"]
-	tdl1 -->|platform| cloudops["Cloud Ops Platform L3"]
-	tdl1 -->|API product| productteam["Product team"]
+
+	subgraph platbranch[" "]
+		direction TB
+		cloudops["Cloud Ops Platform L3"]
+		tdproduct["TD product"]
+	end
+
+	subgraph apibranch[" "]
+		direction TB
+		productteam["Product team in DX"]
+		productnondx["Team not in DX"]
+	end
+
+	tdl1 -->|platform| platbranch
+	tdl1 -->|API product| apibranch
 ```
