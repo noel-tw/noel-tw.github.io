@@ -32,7 +32,7 @@ flowchart TD
 
 	subgraph platbranch[" "]
 		direction TB
-		cloudops["Cloud Ops Platform L3"]
+		cloudops["Cloud App Ops L1-3"]
 		tdmpl["TD or TM prod or eng"]
 		cloudops <-.-> tdmpl
 	end
