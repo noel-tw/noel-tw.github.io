@@ -43,6 +43,6 @@ flowchart TD
 		teamnotindx["Team not in DX"]
 	end
 
-	tdl1 -->|platform| platbranch
+	tdl1 <-->|platform| platbranch
 	tdl1 -->|API product| apibranch
 ```
