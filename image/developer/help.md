@@ -18,7 +18,7 @@ flowchart TD
 	createcase["Create a new TD case"]
 	tdl1["TD L1"]
 	teamindx{"Team in DX"}
-	productteam["Product team in DX"]
+	productteam["Product team"]
 
 	subgraph platbranch[" "]
 		direction TB
