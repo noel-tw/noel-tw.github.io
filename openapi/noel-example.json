@@ -17,7 +17,7 @@
     },
     "servers": [
         {
-            "url": "https://n-oel.herokuapp.com/api/v1",
+            "url": "https://cdev-io.vercel.app/api/v1",
             "description": "production"
         },
         {
@@ -101,7 +101,7 @@
                 ],
                 "servers": [
                     {
-                        "url": "https://n-oel.herokuapp.com/api/v1",
+                        "url": "https://cdev-io.vercel.app/api/v1",
                         "description": "production"
                     },
                     {
@@ -185,7 +185,7 @@
                 },
                 "servers": [
                     {
-                        "url": "https://n-oel.herokuapp.com/api/v1",
+                        "url": "https://cdev-io.vercel.app/api/v1",
                         "description": "production"
                     },
                     {
@@ -268,7 +268,7 @@
                 ],
                 "servers": [
                     {
-                        "url": "https://n-oel.herokuapp.com/api/v1",
+                        "url": "https://cdev-io.vercel.app/api/v1",
                         "description": "production"
                     },
                     {
@@ -335,7 +335,7 @@
                 },
                 "servers": [
                     {
-                        "url": "https://n-oel.herokuapp.com/api/v1",
+                        "url": "https://cdev-io.vercel.app/api/v1",
                         "description": "production"
                     },
                     {
@@ -377,7 +377,7 @@
                 },
                 "servers": [
                     {
-                        "url": "https://n-oel.herokuapp.com/api/v1",
+                        "url": "https://cdev-io.vercel.app/api/v1",
                         "description": "production"
                     },
                     {
